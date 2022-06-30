@@ -25,6 +25,11 @@ const dicesActions: Array<Action> = [
   
 const sumActions: Array<Action> = [
     {
+      sum: 7,
+      label: 'Le dernier à dire 4.1 boit 1 gorgée',
+      drink: false
+    },
+    {
       sum: 9,
       label: 'Vous donnez 1 goulée au joueur précédent',
       drink: false,

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ALL_ACTIONS from './actions';
-import { dices } from './dice';
+import Dice from './Dice';
+import { dices } from './dicesLogic';
 import play from './game';
 import { Action, Result } from './model';
 import Rule from './Rule';
@@ -35,7 +36,7 @@ function App() {
   return (
     <div>
         { !result && (<p>Commencer le jeu</p>)}
-        { result?.dices.map((dice, index) => <p key={index}>{dice}</p>)}
+        { result?.dices.map((dice, index) => <Dice dice={dice}></Dice>)}
         { result?.actions.map((action, index) => <p key={index}>{action.label}</p>)}
         <button type="button" disabled={createNewRule()} onClick={() => setResult(play(actions, dices()))}>
           Jeter les dès
