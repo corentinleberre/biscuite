@@ -18,11 +18,15 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center h-screen">
         { !result && (<p>Commencer le jeu</p>)}
-        { result?.dices.map((dice, index) => <Dice dice={dice} key={index}></Dice>)}
+        { result?.dices && (
+          <div className="flex flex-row">
+            { result?.dices.map((dice, index) => <Dice dice={dice} key={index}></Dice>)}
+          </div>
+        )}
         { result?.actions.map((action, index) => <p key={index}>{action.label}</p>)}
-        <button type="button" disabled={createNewRule()} onClick={() => setResult(play(actions, dices()))}>
+        <button type="button" className="rounded-full color-red" disabled={createNewRule()} onClick={() => setResult(play(actions, dices()))}>
           Jeter les dès
         </button>
         { createNewRule() && <Rule addRule={addRule}></Rule>}
