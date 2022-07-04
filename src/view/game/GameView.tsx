@@ -8,6 +8,7 @@ import { Action } from '../../common/model/action.model';
 import { Result } from '../../common/model/result.model';
 import { Link } from 'react-router-dom';
 import closeIcon from '../../assets/icons/close.svg';
+import GameCard from './GameCard';
 
 function GameView() {
   const [actions, setActions] = useState<Action[]>(ALL_ACTIONS);
@@ -22,7 +23,7 @@ function GameView() {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-[#28DAD4] relative">
-      <div className="fixed top-2 right-2">
+      <div className="fixed top-2 right-2 hover:animate-pulse hover:cursor-pointer">
         <Link to="/"><img src={closeIcon}/></Link>
       </div>
       { result?.dices && (
@@ -30,13 +31,10 @@ function GameView() {
           { result?.dices.map((dice, index) => <Dice dice={dice} key={index}></Dice>)}
         </div>
       )}
-      { result?.actions.map((action, index) => 
-        <div className="bg-white w-5/6 rounded-lg drop-shadow-2xl p-2 m-1 md:w-1/3">
-          <p className="m-2 text-xl font-medium text-center" key={index}>{action.label}</p>
-        </div>
+      { result?.actions.map((action, index) => <GameCard action={action} key={index}/>
       )}
       { !createNewRule() && (
-        <button type="button" className="rounded-full bg-[#FF4571] text-white text-3xl border-4 border-white p-3 m-3" onClick={() => setResult(play(actions, dices()))}>
+        <button type="button" className="rounded-full bg-[#FF4571] hover:bg-[#FF4590] hover:animate-pulse hover:cursor-pointer text-3xl border-4 border-white p-3 m-3 w-2/3 md:w-3/12 text-white" onClick={() => setResult(play(actions, dices()))}>
           Jeter les dès 
         </button>
       )}
