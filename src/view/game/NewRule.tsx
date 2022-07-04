@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Action } from "./model";
+import { Action } from "../../common/model/action.model";
 
-function Rule(props: { addRule: (action: Action) => void}) {
+function NewRule(props: { addRule: (action: Action) => void}) {
 
     const [dice1, setDice1] = useState<number>(0);
     const [dice2, setDice2] = useState<number>(0);
@@ -56,4 +56,4 @@ function Rule(props: { addRule: (action: Action) => void}) {
     );
 }
 
-export default Rule;
+export default NewRule;

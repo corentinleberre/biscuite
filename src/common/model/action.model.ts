@@ -4,9 +4,3 @@ export interface Action {
     label: string;
     drink: boolean;
 }
-  
-export interface Result {
-    dices: Array<number>;
-    actions: Array<Action>;
-}
-  

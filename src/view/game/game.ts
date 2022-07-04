@@ -1,4 +1,5 @@
-import { Action, Result } from "./model";
+import { Action } from "../../common/model/action.model";
+import { Result } from "../../common/model/result.model";
 
 const play = (
     gameActions: Array<Action>,
