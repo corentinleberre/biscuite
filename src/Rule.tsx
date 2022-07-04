@@ -11,8 +11,8 @@ function Rule(props: { addRule: (action: Action) => void}) {
     const isFormValid = (): boolean => dice1 > 0 && dice2 > 0 && label.length > 0;
 
     return (
-        <>
-            <p>Vous devez créer une nouvelle règle</p>
+        <div className="flex flex-col bg-white w-5/6 rounded-lg drop-shadow-2xl p-2 m-4 md:w-1/3">
+            <p>Création de la nouvelle règle :</p>
             <div>
               <div>
                 <label htmlFor="dice1">Dès n°1</label>
@@ -22,6 +22,8 @@ function Rule(props: { addRule: (action: Action) => void}) {
                   value={dice1}
                   onChange={e => setDice1(e.target.valueAsNumber)}
                 />
+              </div>
+              <div>
                 <label htmlFor="dice2">Dès n°2</label>
                 <input
                   type="number"
@@ -50,7 +52,7 @@ function Rule(props: { addRule: (action: Action) => void}) {
               </div>
               <button type="button" disabled={!isFormValid()} onClick={() => props.addRule({dices: [dice1, dice2], label: label, drink: drink})}>Ajouter la règle</button>
             </div>
-        </>
+        </div>
     );
 }
 
