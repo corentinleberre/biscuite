@@ -18,6 +18,10 @@ const play = (
     if (!actions.length || actions.some((element) => element.drink == true)) {
       actions.push({ label: '❌ Vous passez votre tour ❌', drink: false });
     }
+
+    if(dices.some((value) => value == 4) || dices.some((value) => value == 1)) {
+      actions.push({ label: '💩 La 4.1 boit une gorgée 💩', drink: false });
+    }
     
     return { dices: dices, actions: actions };
 };

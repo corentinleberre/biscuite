@@ -2,8 +2,8 @@ import { useState } from 'react'
 import NewRule from './NewRule';
 import ALL_ACTIONS from './actions';
 import Dice from './Dice';
-import { dices } from './dicesLogic';
-import play from './game';
+import { dices } from './dices-logic';
+import play from './game-logic';
 import { Action } from '../../common/model/action.model';
 import { Result } from '../../common/model/result.model';
 import { Link } from 'react-router-dom';
