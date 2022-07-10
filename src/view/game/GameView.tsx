@@ -1,14 +1,14 @@
 import { useState } from "react";
-import NewRule from "./NewRule";
+import { Link } from "react-router-dom";
+import closeIcon from "../../assets/icons/close.svg";
+import { Action } from "../../common/model/action.model";
+import { Result } from "../../common/model/result.model";
 import ALL_ACTIONS from "./actions";
 import Dice from "./Dice";
 import { dices } from "./dices-logic";
 import play from "./game-logic";
-import { Action } from "../../common/model/action.model";
-import { Result } from "../../common/model/result.model";
-import { Link } from "react-router-dom";
-import closeIcon from "../../assets/icons/close.svg";
 import GameCard from "./GameCard";
+import NewRule from "./NewRule";
 
 function GameView() {
   const [actions, setActions] = useState<Action[]>(ALL_ACTIONS);

@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import GameView from "./view/game/GameView";
 import "./index.css";
+import GameView from "./view/game/GameView";
 import MenuView from "./view/menu/MenuView";
 import RulesView from "./view/rules/RulesView";
 

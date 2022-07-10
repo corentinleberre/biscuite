@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Action } from "../../common/model/action.model";
 
 function GameCard(props: { action: Action }) {

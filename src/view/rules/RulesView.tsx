@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-4;
 import closeIcon from "../../assets/icons/close.svg";
 
 function RulesView() {
