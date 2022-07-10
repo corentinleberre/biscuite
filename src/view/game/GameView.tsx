@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import closeIcon from "../../assets/icons/close.svg";
-import { Action } from "../../common/model/action.model";
-import { Result } from "../../common/model/result.model";
+import { Action, Result } from "../../common/model";
 import ALL_ACTIONS from "./actions";
 import Dice from "./Dice";
 import { dices } from "./dices-logic";

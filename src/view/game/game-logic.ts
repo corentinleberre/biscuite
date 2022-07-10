@@ -1,5 +1,4 @@
-import { Action } from "../../common/model/action.model";
-import { Result } from "../../common/model/result.model";
+import { Action, Result } from "../../common/model";
 
 const play = (gameActions: Array<Action>, dices: Array<number>): Result => {
   const actions: Array<Action> = [...gameActions].filter((action) => {
@@ -12,7 +11,11 @@ const play = (gameActions: Array<Action>, dices: Array<number>): Result => {
     }
   });
 
-  if (dices.some((value) => value == 4) || dices.some((value) => value == 1)) {
+  if (
+    dices.some((value) => value == 4)
+      ? !dices.some((value) => value == 1)
+      : dices.some((value) => value == 1)
+  ) {
     actions.push({ label: "💩 La 4.1 boit une gorgée 💩", drink: false });
   }
 
