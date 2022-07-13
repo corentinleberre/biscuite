@@ -11,53 +11,72 @@ function NewRule(props: { addRule: (action: Action) => void }) {
 
   return (
     <div className="flex flex-col bg-white w-5/6 rounded-lg drop-shadow-2xl p-2 m-4 md:w-1/3">
-      <p>Création de la nouvelle règle :</p>
-      <div>
-        <div>
-          <label htmlFor="dice1">Dès n°1</label>
+      <p className="text-center m-2">Création de la nouvelle règle :</p>
+      <div className="flex flex-col">
+        <div className="flex flex-row items-baseline m-2">
+          <label htmlFor="dice1" className="w-2/3">
+            Dès n°1
+          </label>
           <input
             type="number"
             name="dice1"
             value={dice1}
+            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 w-1/3"
             onChange={(e) => setDice1(e.target.valueAsNumber)}
           />
         </div>
-        <div>
-          <label htmlFor="dice2">Dès n°2</label>
+        <div className="flex flex-row items-baseline m-2">
+          <label htmlFor="dice2" className="w-2/3">
+            Dès n°2
+          </label>
           <input
             type="number"
             name="dice2"
             value={dice2}
+            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 w-1/3"
             onChange={(e) => setDice2(e.target.valueAsNumber)}
           />
         </div>
-        <div>
-          <label htmlFor="description">Description</label>
+        <div className="flex flex-col align-center m-2">
+          <label htmlFor="description" className="w-1/3">
+            Description
+          </label>
           <input
             type="text"
             name="description"
+            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
             value={label}
             onChange={(e) => setLabel(e.target.value)}
           />
         </div>
-        <div>
-          <label htmlFor="drink">Drink</label>
+        <div className="flex flex-row items-baseline m-2">
+          <label htmlFor="drink" className="w-5/6">
+            Quand la règle sort le joueur boit
+          </label>
           <input
             type="checkbox"
             name="drink"
+            className="mr-2 leading-tight w-1/6"
             defaultChecked={drink}
             onChange={(_) => setDrink(!drink)}
           />
         </div>
-        <button
-          type="button"
-          disabled={!isFormValid()}
-          onClick={() =>
-            props.addRule({ dices: [dice1, dice2], label: label, drink: drink })
-          }
-        >
-          Ajouter la règle
-        </button>
+        <div className="flex flex-col items-center">
+          <button
+            type="button"
+            disabled={!isFormValid()}
+            className="rounded-full bg-[#FF4571] hover:bg-[#FF4590] transition ease-in delay-150 hover:scale-105 duration-200 hover:cursor-pointer text-lg border-2 border-white p-1 m-1 text-white w-2/3"
+            onClick={() =>
+              props.addRule({
+                dices: [dice1, dice2],
+                label: label,
+                drink: drink,
+              })
+            }
+          >
+            Ajouter la règle
+          </button>
+        </div>
       </div>
     </div>
   );

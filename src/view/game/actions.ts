@@ -4,7 +4,7 @@ const generateDoubleActions = (): Array<Action> => {
   return [1, 2, 3, 4, 5, 6].map((dice) => {
     return {
       dices: [dice, dice],
-      label: `🍻 Vous donnez ${dice} goulées aux personnes de votre choix 🍻`,
+      label: `🍻 Vous donnez ${dice} goulée(s) aux personnes de votre choix 🍻`,
       drink: false,
     };
   });
