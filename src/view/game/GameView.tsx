@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import closeIcon from "../../assets/icons/close.svg";
 import { Action, Result } from "../../common/model";
+import supabase from "../../supabaseClient";
 import ALL_ACTIONS from "./actions";
 import Dice from "./Dice";
 import { dices } from "./dices-logic";
@@ -9,7 +10,26 @@ import play from "./game-logic";
 import GameCard from "./GameCard";
 import NewRule from "./NewRule";
 
+const updateGamePlayed = () => {
+  supabase
+    .from("analytics")
+    .select("game_played")
+    .eq("id", "1")
+    .then((response) => {
+      if (response.data) {
+        const game_played = response.data[0].game_played;
+        supabase
+          .from("analytics")
+          .update({ game_played: game_played + 1 })
+          .eq("id", "1")
+          .then();
+      }
+    });
+};
+
 function GameView() {
+  useEffect(() => updateGamePlayed(), []);
+
   const [actions, setActions] = useState<Action[]>(ALL_ACTIONS);
   const [result, setResult] = useState<Result>();
 
