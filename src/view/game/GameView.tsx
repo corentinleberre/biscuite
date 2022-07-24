@@ -64,24 +64,28 @@ function GameView() {
           <img src={closeIcon} />
         </Link>
       </div>
-      {result?.dices && (
-        <div className="flex flex-row">
-          {result?.dices.map((dice, index) => (
-            <Dice dice={dice} key={index}></Dice>
-          ))}
-        </div>
-      )}
-      {result?.actions.map((action, index) => (
-        <GameCard action={action} key={index} />
-      ))}
+      <div className="flex flex-col items-center justify-center h-3/6 w-4/5 md:w-2/3">
+        {result?.dices && (
+          <div className="flex flex-row">
+            {result?.dices.map((dice, index) => (
+              <Dice dice={dice} key={index}></Dice>
+            ))}
+          </div>
+        )}
+        {result?.actions.map((action, index) => (
+          <GameCard action={action} key={index} />
+        ))}
+      </div>
       {!createNewRule() && (
-        <button
-          type="button"
-          className="rounded-full bg-[#FF4571] hover:bg-[#FF4590] transition ease-in delay-150 hover:scale-105 duration-200 hover:cursor-pointer text-3xl border-4 border-white p-3 m-3 w-2/3 md:w-3/12 text-white"
-          onClick={() => setResult(play(actions, dices()))}
-        >
-          Jeter les dès
-        </button>
+        <div className="h-1/6">
+          <button
+            type="button"
+            className="rounded-full bg-[#FF4571] hover:bg-[#FF4590] transition ease-in delay-150 hover:scale-105 duration-200 hover:cursor-pointer text-3xl border-4 border-white p-3 m-3 text-white"
+            onClick={() => setResult(play(actions, dices()))}
+          >
+            Jeter les dès
+          </button>
+        </div>
       )}
       {createNewRule() && <NewRule addRule={addRule}></NewRule>}
     </div>

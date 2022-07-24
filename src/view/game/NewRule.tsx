@@ -10,7 +10,7 @@ function NewRule(props: { addRule: (action: Action) => void }) {
   const isFormValid = (): boolean => dice1 > 0 && dice2 > 0 && label.length > 0;
 
   return (
-    <div className="flex flex-col bg-white w-5/6 rounded-lg drop-shadow-2xl p-2 m-2 md:w-1/3">
+    <div className="flex flex-col bg-white w-5/6 rounded-lg p-2 m-3 md:w-1/3">
       <p className="text-center m-1">Création de la nouvelle règle :</p>
       <div className="flex flex-col">
         <div className="flex flex-row items-baseline m-1">
