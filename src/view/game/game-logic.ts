@@ -1,5 +1,10 @@
 import { Action, Result } from "../../common/model";
 
+export const isKatinDrinking = (dices: Array<number>): boolean =>
+  dices.some((value) => value == 4)
+    ? !dices.some((value) => value == 1)
+    : dices.some((value) => value == 1);
+
 const play = (gameActions: Array<Action>, dices: Array<number>): Result => {
   const actions: Array<Action> = [...gameActions].filter((action) => {
     if (action.dices) {
@@ -11,11 +16,7 @@ const play = (gameActions: Array<Action>, dices: Array<number>): Result => {
     }
   });
 
-  if (
-    dices.some((value) => value == 4)
-      ? !dices.some((value) => value == 1)
-      : dices.some((value) => value == 1)
-  ) {
+  if (isKatinDrinking(dices)) {
     actions.push({ label: "💩 La 4.1 boit une gorgée 💩", drink: false });
   }
 

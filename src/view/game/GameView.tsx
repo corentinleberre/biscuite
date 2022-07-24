@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
 import closeIcon from "../../assets/icons/close.svg";
 import { Action, Result } from "../../common/model";
 import supabase from "../../supabaseClient";
@@ -9,6 +11,7 @@ import { dices } from "./dices-logic";
 import play from "./game-logic";
 import GameCard from "./GameCard";
 import NewRule from "./NewRule";
+import { particlesOptions } from "./particles";
 
 const updateGamePlayed = () => {
   supabase
@@ -30,6 +33,10 @@ const updateGamePlayed = () => {
 function GameView() {
   useEffect(() => updateGamePlayed(), []);
 
+  const particlesInit = async (main: any) => {
+    await loadFull(main);
+  };
+
   const [actions, setActions] = useState<Action[]>(ALL_ACTIONS);
   const [result, setResult] = useState<Result>();
 
@@ -41,8 +48,17 @@ function GameView() {
     setResult(play(actions, dices()));
   };
 
+  const isNewKatin = (dices: Array<number>) => dices[0] === 1 && dices[1] === 4;
+
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-[#28DAD4] relative">
+      {result && isNewKatin(result?.dices) && (
+        <Particles
+          id="tsparticles"
+          init={particlesInit}
+          options={particlesOptions}
+        />
+      )}
       <div className="fixed top-2 right-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:cursor-pointer">
         <Link to="/">
           <img src={closeIcon} />
