@@ -33,9 +33,7 @@ const updateGamePlayed = () => {
 function GameView() {
   useEffect(() => updateGamePlayed(), []);
 
-  const particlesInit = async (main: any) => {
-    await loadFull(main);
-  };
+  const particlesInit = async (main: any) => await loadFull(main);
 
   const [actions, setActions] = useState<Action[]>(ALL_ACTIONS);
   const [result, setResult] = useState<Result>();
@@ -64,30 +62,34 @@ function GameView() {
           <img src={closeIcon} />
         </Link>
       </div>
-      <div className="flex flex-col items-center justify-center h-3/6 w-4/5 md:w-2/3">
-        {result?.dices && (
-          <div className="flex flex-row">
-            {result?.dices.map((dice, index) => (
-              <Dice dice={dice} key={index}></Dice>
-            ))}
-          </div>
-        )}
-        {result?.actions.map((action, index) => (
-          <GameCard action={action} key={index} />
-        ))}
+      <div className="h-5/6 flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center h-1/6 w-full md:w-2/3">
+          {result?.dices && (
+            <div className="flex flex-row">
+              {result?.dices.map((dice, index) => (
+                <Dice dice={dice} key={index}></Dice>
+              ))}
+            </div>
+          )}
+        </div>
+        <div className="flex flex-col items-center justify-center h-3/6 w-full md:w-2/3">
+          {result?.actions.map((action, index) => (
+            <GameCard action={action} key={index} />
+          ))}
+        </div>
+        {createNewRule() && <NewRule addRule={addRule}></NewRule>}
       </div>
       {!createNewRule() && (
-        <div className="h-1/6">
+        <div className="h-1/6 w-1/2">
           <button
             type="button"
-            className="rounded-full bg-[#FF4571] hover:bg-[#FF4590] transition ease-in delay-150 hover:scale-105 duration-200 hover:cursor-pointer text-3xl border-4 border-white p-3 m-3 text-white"
+            className="rounded-full bg-[#FF4571] hover:bg-[#FF4590] transition ease-in delay-150 hover:scale-105 duration-200 hover:cursor-pointer text-3xl border-4 border-white p-3 m-3 text-white w-full"
             onClick={() => setResult(play(actions, dices()))}
           >
             Jeter les dès
           </button>
         </div>
       )}
-      {createNewRule() && <NewRule addRule={addRule}></NewRule>}
     </div>
   );
 }
