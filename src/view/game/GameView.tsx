@@ -37,13 +37,14 @@ function GameView() {
 
   const [actions, setActions] = useState<Action[]>(ALL_ACTIONS);
   const [result, setResult] = useState<Result>();
+  const [someoneIsKatin, setSomeoneIsKatin] = useState(false);
 
   const createNewRule = (): boolean =>
     result?.dices.reduce((p, v) => p + v) === 2;
 
   const addRule = (action: Action): void => {
     setActions((actions) => [...actions, action]);
-    setResult(play(actions, dices()));
+    setResult(play(actions, dices(), someoneIsKatin, setSomeoneIsKatin));
   };
 
   const isNewKatin = (dices: Array<number>) => dices[0] === 1 && dices[1] === 4;
@@ -62,8 +63,8 @@ function GameView() {
           <img src={closeIcon} />
         </Link>
       </div>
-      <div className="h-5/6 flex flex-col items-center justify-center">
-        <div className="flex flex-col items-center justify-center h-1/6 w-full md:w-2/3">
+      <div className="h-5/6 flex flex-col items-center justify-center md:w-2/3">
+        <div className="flex flex-col items-center justify-center h-1/6 w-full">
           {result?.dices && (
             <div className="flex flex-row">
               {result?.dices.map((dice, index) => (
@@ -72,7 +73,7 @@ function GameView() {
             </div>
           )}
         </div>
-        <div className="flex flex-col items-center justify-center h-3/6 w-full md:w-2/3">
+        <div className="flex flex-col items-center justify-center h-3/6 w-full">
           {result?.actions.map((action, index) => (
             <GameCard action={action} key={index} />
           ))}
@@ -84,7 +85,11 @@ function GameView() {
           <button
             type="button"
             className="rounded-full bg-[#FF4571] hover:bg-[#FF4590] transition ease-in delay-150 hover:scale-105 duration-200 hover:cursor-pointer text-3xl border-4 border-white p-3 m-3 text-white w-full"
-            onClick={() => setResult(play(actions, dices()))}
+            onClick={() =>
+              setResult(
+                play(actions, dices(), someoneIsKatin, setSomeoneIsKatin)
+              )
+            }
           >
             Jeter les dès
           </button>
