@@ -74,7 +74,7 @@ function BiscuiteGameView() {
           )}
         </div>
         <div className="flex flex-col items-center justify-center h-3/6 w-full">
-          {result?.actions.map((action, index) => (
+          {result?.actions?.map((action, index) => (
             <GameCard action={action} key={index} />
           ))}
         </div>
