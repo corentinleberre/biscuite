@@ -1,4 +1,4 @@
-import { Action } from "../../common/model/action.model";
+import { Action } from "../../../common/model";
 
 const generateDoubleActions = (): Array<Action> => {
   return [1, 2, 3, 4, 5, 6].map((dice) => {

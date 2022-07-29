@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-import closeIcon from "../../assets/icons/close.svg";
-import { Action, Result } from "../../common/model";
-import supabase from "../../supabaseClient";
+import closeIcon from "../../../assets/icons/close.svg";
+import Dice from "../../../common/component/Dice";
+import { dices } from "../../../common/logic/dices";
+import { Action, Result } from "../../../common/model";
+import supabase from "../../../supabaseClient";
 import ALL_ACTIONS from "./actions";
-import Dice from "./Dice";
-import { dices } from "./dices-logic";
 import play from "./game-logic";
 import GameCard from "./GameCard";
 import NewRule from "./NewRule";
@@ -30,7 +30,7 @@ const updateGamePlayed = () => {
     });
 };
 
-function GameView() {
+function BiscuiteGameView() {
   useEffect(() => updateGamePlayed(), []);
 
   const particlesInit = async (main: any) => await loadFull(main);
@@ -99,4 +99,4 @@ function GameView() {
   );
 }
 
-export default GameView;
+export default BiscuiteGameView;

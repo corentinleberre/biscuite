@@ -2,7 +2,8 @@ import GameButton from "../../common/component/GameButton";
 
 function MenuView() {
   const menu = [
-    { text: "🎲 Jouer", link: "/game" },
+    { text: "🎲 Jouer", link: "/game/biscuite" },
+    { text: "🎲 Mode libre", link: "/game/free" },
     { text: "📕 Règles", link: "/rules" },
   ];
 

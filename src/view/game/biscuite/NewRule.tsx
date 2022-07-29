@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Action } from "../../common/model/action.model";
+import { Action } from "../../../common/model";
 
 function NewRule(props: { addRule: (action: Action) => void }) {
   const [dice1, setDice1] = useState<number>(0);

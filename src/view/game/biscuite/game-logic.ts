@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { Action, Result } from "../../common/model";
+import { Action, Result } from "../../../common/model";
 
 export const isKatinDrinking = (dices: Array<number>): boolean =>
   dices.some((value) => value == 4)
