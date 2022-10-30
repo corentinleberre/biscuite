@@ -73,7 +73,7 @@ function BiscuiteGameView() {
             </div>
           )}
         </div>
-        <div className="flex flex-col items-center justify-center h-3/6 w-full">
+        <div className="flex flex-col items-center justify-center h-3/6 w-full px-2">
           {result?.actions?.map((action, index) => (
             <GameCard action={action} key={index} />
           ))}
@@ -81,7 +81,7 @@ function BiscuiteGameView() {
         {createNewRule() && <NewRule addRule={addRule}></NewRule>}
       </div>
       {!createNewRule() && (
-        <div className="h-1/6 w-1/2">
+        <div className="h-1/6 w-2/3 md:w-1/2">
           <button
             type="button"
             className="rounded-full bg-[#FF4571] hover:bg-[#FF4590] transition ease-in delay-150 hover:scale-105 duration-200 hover:cursor-pointer text-3xl border-4 border-white p-3 m-3 text-white w-full"
