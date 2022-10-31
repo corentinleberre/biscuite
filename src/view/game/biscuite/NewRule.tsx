@@ -10,7 +10,7 @@ function NewRule(props: { addRule: (action: Action) => void }) {
   const isFormValid = (): boolean => dice1 > 0 && dice2 > 0 && label.length > 0;
 
   return (
-    <div className="flex flex-col bg-white w-5/6 rounded-lg p-2 m-3 md:w-1/3">
+    <div className="flex flex-col bg-white rounded-lg p-2 m-3 w-11/12 sm:w-2/3 md:w-1/2">
       <p className="text-center m-1">Création de la nouvelle règle :</p>
       <div className="flex flex-col">
         <div className="flex flex-row items-baseline m-1">
@@ -21,7 +21,7 @@ function NewRule(props: { addRule: (action: Action) => void }) {
             type="number"
             name="dice1"
             value={dice1}
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-1 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 w-1/3"
+            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded p-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 w-1/3"
             onChange={(e) => setDice1(e.target.valueAsNumber)}
           />
         </div>
@@ -33,7 +33,7 @@ function NewRule(props: { addRule: (action: Action) => void }) {
             type="number"
             name="dice2"
             value={dice2}
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-1 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 w-1/3"
+            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded p-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 w-1/3"
             onChange={(e) => setDice2(e.target.valueAsNumber)}
           />
         </div>

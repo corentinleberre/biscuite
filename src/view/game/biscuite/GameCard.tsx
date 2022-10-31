@@ -14,7 +14,7 @@ function GameCard(props: { action: Action }) {
   return (
     <>
       {visible && (
-        <div className="bg-white rounded-lg p-2 m-1 w-full transition-opacity duration-300 ease-in-out">
+        <div className="w-full slide-fwd-center">
           <p className="m-2 text-xl font-medium text-center">
             {props.action.label}
           </p>

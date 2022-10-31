@@ -4,7 +4,7 @@ const generateDoubleActions = (): Array<Action> => {
   return [1, 2, 3, 4, 5, 6].map((dice) => {
     return {
       dices: [dice, dice],
-      label: `🍻 Vous donnez ${dice} goulée(s) aux personnes de votre choix 🍻`,
+      label: `🍻 Vous donnez ${dice} goulée(s) aux personnes de votre choix`,
       drink: false,
     };
   });
@@ -13,12 +13,12 @@ const generateDoubleActions = (): Array<Action> => {
 const dicesActions: Array<Action> = [
   {
     dices: [4, 1],
-    label: "💩 Vous devenez la 4.1 💩",
+    label: "💩 Vous devenez la 4.1",
     drink: true,
   },
   {
     dices: [1, 1],
-    label: "📝 Il va falloir inventer une nouvelle règle 📝",
+    label: "📝 Il va falloir inventer une nouvelle règle",
     drink: false,
   },
 ];
@@ -26,22 +26,22 @@ const dicesActions: Array<Action> = [
 const sumActions: Array<Action> = [
   {
     sum: 7,
-    label: "🍾 Le dernier à dire 4.1 boit 1 gorgée 🍾",
+    label: "🍾 Le dernier à dire 4.1 boit 1 gorgée",
     drink: false,
   },
   {
     sum: 9,
-    label: "🍺 Vous donnez 1 goulée au joueur précédent 🍺",
+    label: "🍺 Vous donnez 1 goulée au joueur précédent",
     drink: false,
   },
   {
     sum: 10,
-    label: "🤦‍♂‍ Vous buvez 1 goulée 🤦‍♂‍",
+    label: "🤦‍♂‍ Vous buvez 1 goulée",
     drink: true,
   },
   {
     sum: 11,
-    label: "🍺 Vous donnez 1 goulée au joueur suivant 🍺",
+    label: "🍺 Vous donnez 1 goulée au joueur suivant",
     drink: false,
   },
 ];

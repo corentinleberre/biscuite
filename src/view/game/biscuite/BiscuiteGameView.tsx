@@ -50,7 +50,7 @@ function BiscuiteGameView() {
   const isNewKatin = (dices: Array<number>) => dices[0] === 1 && dices[1] === 4;
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-[#28DAD4] relative">
+    <div className="flex flex-col items-center justify-center h-full background-gradient relative">
       {result && isNewKatin(result?.dices) && (
         <Particles
           id="tsparticles"
@@ -59,12 +59,12 @@ function BiscuiteGameView() {
         />
       )}
       <div className="fixed top-2 right-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:cursor-pointer">
-        <Link to="/">
+        <Link to="/game/menu">
           <img src={closeIcon} />
         </Link>
       </div>
       <div className="h-5/6 flex flex-col items-center justify-center md:w-2/3">
-        <div className="flex flex-col items-center justify-center h-1/6 w-full">
+        <div className="h-1/3 flex flex-col items-center justify-end w-full">
           {result?.dices && (
             <div className="flex flex-row">
               {result?.dices.map((dice, index) => (
@@ -73,23 +73,25 @@ function BiscuiteGameView() {
             </div>
           )}
         </div>
-        <div className="flex flex-col items-center justify-center h-3/6 w-full px-2">
-          {result?.actions?.map((action, index) => (
-            <GameCard action={action} key={index} />
-          ))}
+        <div className="h-2/3 flex flex-col items-center justify-center w-full px-2">
+          <div className="bg-white rounded-xl shadow-lg w-full">
+            {result?.actions?.map((action, index) => (
+              <GameCard action={action} key={index} />
+            ))}
+          </div>
         </div>
         {createNewRule() && <NewRule addRule={addRule}></NewRule>}
       </div>
       {!createNewRule() && (
-        <div className="h-1/6 w-2/3 md:w-1/2">
+        <div className="w-3/5 sm:w-2/3 md:w-1/2">
           <button
             type="button"
-            className="rounded-full bg-[#FF4571] hover:bg-[#FF4590] transition ease-in delay-150 hover:scale-105 duration-200 hover:cursor-pointer text-3xl border-4 border-white p-3 m-3 text-white w-full"
-            onClick={() =>
+            className="rounded-full bg-white transition ease-in delay-150 hover:scale-105 duration-200 hover:cursor-pointer text-3xl font-black p-3 m-3 text-black w-full"
+            onClick={() => {
               setResult(
                 play(actions, dices(), someoneIsKatin, setSomeoneIsKatin)
-              )
-            }
+              );
+            }}
           >
             Jeter les dès
           </button>
