@@ -1,29 +1,20 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import closeIcon from "../../../assets/icons/close.svg";
-import Dice from "../../../common/component/Dice";
+import CloseButton from "../../../common/component/CloseButton";
+import DiceResult from "../../../common/component/DiceResult";
+import { updateGamePlayed } from "../../../common/logic/analytics";
 import { dices } from "../../../common/logic/dices";
 
 function FreeGameView() {
   const [result, setResult] = useState<Array<number>>();
 
+  useEffect(() => updateGamePlayed("free"), []);
+
   return (
-    <div className="flex flex-col items-center justify-center h-screen background-gradient relative">
-      <div className="fixed top-2 right-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:cursor-pointer">
-        <Link to="/">
-          <img src={closeIcon} />
-        </Link>
-      </div>
+    <div className="h-full flex flex-col items-center justify-center background-gradient relative">
+      <CloseButton icon={closeIcon} route="/" />
       <div className="h-5/6 w-full md:w-2/3 flex flex-col items-center justify-center">
-        <div className="h-1/6 w-full flex flex-col items-center justify-center ">
-          {result && (
-            <div className="w-11/12 sm:w-3/4 md:w-2/3 flex flex-row">
-              {result?.map((dice, index) => (
-                <Dice dice={dice} key={index}></Dice>
-              ))}
-            </div>
-          )}
-        </div>
+        <DiceResult dices={result} />
       </div>
       <div className="w-3/5 sm:w-2/3 md:w-1/2 flex flex-col items-center justify-center">
         <button

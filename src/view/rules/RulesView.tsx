@@ -20,7 +20,7 @@ function RulesView() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-[#28DAD4] relative">
+    <div className="flex flex-col items-center justify-center h-full bg-[#28DAD4] relative">
       <div className="fixed top-2 right-2 hover:animate-pulse hover:cursor-pointer">
         <Link to="/">
           <img src={closeIcon} />
