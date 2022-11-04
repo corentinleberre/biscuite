@@ -21,7 +21,7 @@ function Dice(props: { dice: number }) {
 
   return (
     <>
-      <img className="m-2 drop-shadow-lg" src={images[dice]} />
+      <img className="w-full m-2 drop-shadow-lg" src={images[dice]} />
     </>
   );
 }

@@ -8,16 +8,16 @@ function FreeGameView() {
   const [result, setResult] = useState<Array<number>>();
 
   return (
-    <div className="flex flex-col items-center justify-center h-full background-gradient relative">
+    <div className="flex flex-col items-center justify-center h-screen background-gradient relative">
       <div className="fixed top-2 right-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:cursor-pointer">
         <Link to="/">
           <img src={closeIcon} />
         </Link>
       </div>
-      <div className="h-5/6 flex flex-col items-center justify-center md:w-2/3">
-        <div className="flex flex-col items-center justify-center h-1/6 w-full">
+      <div className="h-5/6 w-full md:w-2/3 flex flex-col items-center justify-center">
+        <div className="h-1/6 w-full flex flex-col items-center justify-center ">
           {result && (
-            <div className="flex flex-row">
+            <div className="w-11/12 sm:w-3/4 md:w-2/3 flex flex-row">
               {result?.map((dice, index) => (
                 <Dice dice={dice} key={index}></Dice>
               ))}
@@ -29,8 +29,7 @@ function FreeGameView() {
         <button
           type="button"
           className="rounded-full bg-white transition ease-in delay-150 hover:scale-105 duration-200 hover:cursor-pointer text-3xl font-black p-3 m-3 text-black w-full"
-          onClick={() => setResult(dices())}
-        >
+          onClick={() => setResult(dices())}>
           Jeter les dès
         </button>
       </div>
