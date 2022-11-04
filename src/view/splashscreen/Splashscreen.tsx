@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/icons/logo.svg";
+import Signature from "../../common/component/Signature";
 
 function SplashscreenView() {
   const navigate = useNavigate();
@@ -14,12 +15,15 @@ function SplashscreenView() {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center splashcreen-gradient h-full">
-      <img
-        className="rotate-center m-2 drop-shadow-xl w-1/2 sm:w-1/3 md:w-1/5"
-        src={logo}
-      />
-    </div>
+    <>
+      <div className="flex flex-col items-center justify-center splashcreen-gradient h-full">
+        <img
+          className="rotate-center m-2 drop-shadow-xl w-1/2 sm:w-1/3 md:w-1/5"
+          src={logo}
+        />
+      </div>
+      <Signature />
+    </>
   );
 }
 

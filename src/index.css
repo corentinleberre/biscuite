@@ -18,7 +18,7 @@ body,
 }
 
 .splashcreen-gradient {
-  background: linear-gradient(90deg, #02aab0 0%, #00cdac 100%);
+  background: linear-gradient(90deg, #c84e89 0%, #f15f79 100%);
 }
 
 .background-gradient {
@@ -33,21 +33,21 @@ body,
 @-webkit-keyframes rotate-center {
   0% {
     -webkit-transform: rotate(0);
-    transform: rotate(0);
+    transform: rotate(0) scale(0.5);
   }
   100% {
     -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+    transform: rotate(360deg) scale(1);
   }
 }
 @keyframes rotate-center {
   0% {
     -webkit-transform: rotate(0);
-    transform: rotate(0);
+    transform: rotate(0) scale(0.5);
   }
   100% {
     -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+    transform: rotate(360deg) scale(1);
   }
 }
 

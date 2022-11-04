@@ -1,3 +1,4 @@
+import Signature from "../../common/component/Signature";
 import GameCard from "./GameCard";
 
 function GameMenuView() {
@@ -30,16 +31,19 @@ function GameMenuView() {
     },
   ];
   return (
-    <div className="background-gradient h-full">
-      <div className="flex justify-center">
-        <h1 className="text-3xl not-italic font-black m-5">MODE DE JEU</h1>
+    <>
+      <div className="background-gradient h-full">
+        <div className="flex justify-center">
+          <h1 className="text-3xl not-italic font-black m-5">MODE DE JEU</h1>
+        </div>
+        <div className="flex flex-col space-y-4 justify-between px-[4%]">
+          {cards.map((card, index) => (
+            <GameCard key={index} {...card} />
+          ))}
+        </div>
       </div>
-      <div className="flex flex-col space-y-4 justify-between p-3">
-        {cards.map((card, index) => (
-          <GameCard key={index} {...card} />
-        ))}
-      </div>
-    </div>
+      <Signature />
+    </>
   );
 }
 

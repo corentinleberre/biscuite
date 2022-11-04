@@ -10,7 +10,7 @@ function GameCard(props: {
   return (
     <div
       onClick={() => navigate(props.navigate)}
-      className="w-full bg-white rounded-2xl flex flex-col p-4 shadow-lg hover:cursor-pointer"
+      className="w-full bg-white rounded-2xl flex flex-col p-4 shadow-lg hover:cursor-pointer hover:scale-105 duration-300"
     >
       <div className="flex flex-row justify-center">
         <p className="font-black text-2xl">
