@@ -15,7 +15,7 @@ function Dice(props: { dice: number }) {
     setTimeout(() => {
       setDice(props.dice);
     }, Math.floor(Math.random() * 200) + 500);
-  }, [props]);
+  }, [props.dice]);
 
   const images = [mystery, dice1, dice2, dice3, dice4, dice5, dice6];
 
