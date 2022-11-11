@@ -4,6 +4,7 @@ import { loadFull } from "tsparticles";
 import closeIcon from "../../../assets/icons/close.svg";
 import CloseButton from "../../../common/component/CloseButton";
 import CloseModal from "../../../common/component/CloseModal";
+import DiceButton from "../../../common/component/DiceButton";
 import DiceResult from "../../../common/component/DiceResult";
 import Modal from "../../../common/component/Modal";
 import SwiperTest from "../../../common/component/SwiperTest";
@@ -52,6 +53,32 @@ function BiscuiteGameView() {
           {slides && <SwiperTest index={slides} result={result} />}
           {createNewRule() && <NewRule addRule={addRule}></NewRule>}
         </div>
+        <Modal visible={true}>
+          <div className="w-full md:w-1/2 h-2/3 bg-white rounded-t-2xl">
+            <div className="flex flex-col items-center justify-center my-3 space-y-3">
+              <p className="font-black text-2xl text-center">
+                Double 1
+                <br />
+                Bien joué(e).
+              </p>
+              <p className="font-normal text-base text-center">
+                A toi de créer une nouvelle règle bien stylée 🤭
+              </p>
+              <p className="font-black text-xl text-center">
+                Choisis ta combinaison
+              </p>
+              <div className="w-full h-24 flex flex-row items-center justify-center">
+                <DiceButton />
+                <DiceButton />
+              </div>
+              <p className="font-black text-xl text-center">
+                Veux tu jouer les valeurs ou la somme des dès ?
+              </p>
+              <div></div>
+              <p className="font-black text-xl text-center">Choisis ta règle</p>
+            </div>
+          </div>
+        </Modal>
         {!createNewRule() && (
           <div className="w-3/5 h-1/6 sm:w-2/3 md:w-1/2 flex flex-col items-center justify-center">
             <button
