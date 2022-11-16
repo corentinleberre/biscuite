@@ -6,12 +6,12 @@ import CloseButton from "../../../common/component/CloseButton";
 import CloseModal from "../../../common/component/CloseModal";
 import DiceResult from "../../../common/component/DiceResult";
 import Modal from "../../../common/component/Modal";
+import SwiperTest from "../../../common/component/SwiperTest";
 import { updateGamePlayed } from "../../../common/logic/analytics";
 import { dices } from "../../../common/logic/dices";
 import { Action, Result } from "../../../common/model";
 import ALL_ACTIONS from "./actions";
 import play from "./game-logic";
-import GameCard from "./GameCard";
 import NewRule from "./NewRule";
 import { particlesOptions } from "./particles";
 
@@ -35,26 +35,21 @@ function BiscuiteGameView() {
 
   const isNewKatin = (dices: Array<number>) => dices[0] === 1 && dices[1] === 4;
 
+  const [slides, setSlides] = useState<number[]>([]);
+
+  const addEl = () => {
+    !slides.length
+      ? setSlides([1])
+      : setSlides((state) => [...state, state.length + 1]);
+  };
+
   return (
     <>
       <div className="h-full flex flex-col items-center justify-center background-gradient">
         <CloseButton icon={closeIcon} action={() => setShowModal(true)} />
-        {result && isNewKatin(result?.dices) && (
-          <Particles
-            id="tsparticles"
-            init={particlesInit}
-            options={particlesOptions}
-          />
-        )}
-        <div className="h-5/6 w-full md:w-2/3 flex flex-col items-center justify-center">
+        <div className="h-5/6 w-full md:w-2/3 flex flex-col items-center justify-evenly">
           <DiceResult dices={result?.dices} />
-          <div className="h-1/2 flex flex-col items-center justify-center w-full px-2">
-            <div className="bg-white rounded-xl shadow-lg w-full">
-              {result?.actions?.map((action, index) => (
-                <GameCard action={action} key={index} />
-              ))}
-            </div>
-          </div>
+          {slides && <SwiperTest index={slides} result={result} />}
           {createNewRule() && <NewRule addRule={addRule}></NewRule>}
         </div>
         {!createNewRule() && (
@@ -63,11 +58,15 @@ function BiscuiteGameView() {
               type="button"
               className="rounded-full bg-white transition ease-in delay-150 hover:scale-105 duration-200 hover:cursor-pointer text-3xl font-black p-3 m-3 text-black w-full"
               onClick={() => {
-                setResult(
-                  play(actions, dices(), someoneIsKatin, setSomeoneIsKatin)
+                const result = play(
+                  actions,
+                  dices(),
+                  someoneIsKatin,
+                  setSomeoneIsKatin
                 );
-              }}
-            >
+                setResult(result);
+                addEl();
+              }}>
               Jeter les dès
             </button>
           </div>
@@ -76,6 +75,13 @@ function BiscuiteGameView() {
       <Modal visible={showModal}>
         <CloseModal action={() => setShowModal(false)} />
       </Modal>
+      {result && isNewKatin(result?.dices) && (
+        <Particles
+          id="tsparticles"
+          init={particlesInit}
+          options={particlesOptions}
+        />
+      )}
     </>
   );
 }

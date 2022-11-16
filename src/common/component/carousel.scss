@@ -1,0 +1,7 @@
+.swiper {
+  @apply w-9/12 h-[40%] sm:w-2/3 lg:w-1/2;
+}
+
+.swiper-slide {
+  @apply flex flex-col items-center justify-center rounded-3xl text-xl md:text-2xl text-black text-center bg-white font-bold m-2;
+}

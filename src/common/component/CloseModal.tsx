@@ -6,7 +6,7 @@ function CloseModal(props: { action: Function }) {
       <div className="w-10/12 md:w-1/2  bg-white rounded-2xl p-5">
         <div className="flex flex-col items-center justify-center space-y-10">
           <p className="font-black text-2xl text-center">
-            Vous êtes sur de vouloir quitter cette partie ?
+            Êtes vous sur de vouloir quitter cette partie ?
           </p>
           <div className="flex flex-row space-x-10 items-center justify-center">
             <button
