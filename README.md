@@ -1,9 +1,5 @@
 # Biscuite
 
-<p align="center">
-  <img width="96" height="96" src="icon.png" alt="biscuite icon">
-</p>
-
 Biscuite is a drinking game played with two dice.
 
 # Rules
@@ -12,7 +8,7 @@ TODO
 
 ## Demo
 
-Play 🎲 👉 http://world-explorer-swart.vercel.app/
+👉 [Play 🎲](https://react-biscuite.vercel.app/) 
 
 ## Tech Stack
 
