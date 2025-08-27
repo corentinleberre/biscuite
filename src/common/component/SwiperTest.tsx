@@ -5,7 +5,7 @@ import "swiper/css/effect-cards";
 import "./carousel.scss";
 
 import { useEffect, useState } from "react";
-import { EffectCards } from "swiper";
+import { EffectCards } from "swiper/modules";
 
 function SwiperTest(props: { index: any[]; result: any }) {
   const [swiper, setSwiper] = useState<any>(null);
