@@ -20,14 +20,16 @@ function GameMenuView() {
       emoji: "🍻",
       title: "Nrv",
       paragraph:
-        "Des multiplicateurs de goulées aléatoires entrent en jeux... L’objectif est simple boire un maximum.",
+        "Des multiplicateurs de goulées aléatoires entrent en jeux... L'objectif est simple boire un maximum.",
       navigate: "/game/menu",
+      showLock: true,
     },
     {
       emoji: "🥵",
       title: "Les problèmes",
       paragraph: "Préparez vous à briser des amitiés",
       navigate: "/game/menu",
+      showLock: true,
     },
   ];
   return (
