@@ -10,7 +10,9 @@
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
-    "test:report": "playwright show-report"
+    "test:report": "playwright show-report",
+    "test:ci": "CI=true playwright test",
+    "test:docker": "docker-compose -f docker-compose.test.yml up --build --abort-on-container-exit"
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.35.4",
