@@ -1,0 +1,22 @@
+# Dockerfile for running tests in a consistent environment
+FROM mcr.microsoft.com/playwright:v1.40.0-focal
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci
+
+# Copy source code
+COPY . .
+
+# Build the application
+RUN npm run build
+
+# Expose the port that Vite uses
+EXPOSE 5173
+
+# Command to run tests
+CMD ["npm", "run", "test"]
