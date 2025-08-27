@@ -1,32 +1,32 @@
 import Signature from "../../common/component/Signature";
 import GameCard from "./GameCard";
+import { useTranslation } from "react-i18next";
 
 function GameMenuView() {
+  const { t } = useTranslation();
   const cards = [
     {
       emoji: "🎲",
-      title: "Mode libre",
-      paragraph: "Pas de règles ici, faites place a votre imagination.",
+      title: t("gameMenu.cards.free.title"),
+      paragraph: t("gameMenu.cards.free.paragraph"),
       navigate: "/game/free",
     },
     {
       emoji: "🥳",
-      title: "Classique",
-      paragraph:
-        "Ce mode est le meilleur moyen de découvrir le jeu. Des combinaisons de dès bien traitres, créée vos règles, mais attention à ne pas devenir la 4.1 !",
+      title: t("gameMenu.cards.classic.title"),
+      paragraph: t("gameMenu.cards.classic.paragraph"),
       navigate: "/game/biscuite",
     },
     {
       emoji: "🍻",
-      title: "Nrv",
-      paragraph:
-        "Des multiplicateurs de goulées aléatoires entrent en jeux... L’objectif est simple boire un maximum.",
+      title: t("gameMenu.cards.nrv.title"),
+      paragraph: t("gameMenu.cards.nrv.paragraph"),
       navigate: "/game/menu",
     },
     {
       emoji: "🥵",
-      title: "Les problèmes",
-      paragraph: "Préparez vous à briser des amitiés",
+      title: t("gameMenu.cards.problems.title"),
+      paragraph: t("gameMenu.cards.problems.paragraph"),
       navigate: "/game/menu",
     },
   ];
@@ -34,7 +34,7 @@ function GameMenuView() {
     <>
       <div className="background-gradient h-full">
         <div className="flex justify-center">
-          <h1 className="text-3xl not-italic font-black m-5">MODE DE JEU</h1>
+          <h1 className="text-3xl not-italic font-black m-5">{t("gameMenu.heading")}</h1>
         </div>
         <div className="flex flex-col space-y-4 justify-between px-[4%]">
           {cards.map((card, index) => (
