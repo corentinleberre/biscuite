@@ -14,8 +14,10 @@ import ALL_ACTIONS from "./actions";
 import play from "./game-logic";
 import NewRule from "./NewRule";
 import { particlesOptions } from "./particles";
+import { useTranslation } from "react-i18next";
 
 function BiscuiteGameView() {
+  const { t } = useTranslation();
   useEffect(() => updateGamePlayed("classic"), []);
 
   const particlesInit = async (main: any) => await loadFull(main);
@@ -67,7 +69,7 @@ function BiscuiteGameView() {
                 setResult(result);
                 addEl();
               }}>
-              Jeter les dès
+              {t("common.rollDice")}
             </button>
           </div>
         )}

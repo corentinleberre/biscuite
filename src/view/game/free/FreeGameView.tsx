@@ -6,8 +6,10 @@ import DiceResult from "../../../common/component/DiceResult";
 import Modal from "../../../common/component/Modal";
 import { updateGamePlayed } from "../../../common/logic/analytics";
 import { dices } from "../../../common/logic/dices";
+import { useTranslation } from "react-i18next";
 
 function FreeGameView() {
+  const { t } = useTranslation();
   const [result, setResult] = useState<Array<number>>();
   const [showModal, setShowModal] = useState(false);
 
@@ -26,7 +28,7 @@ function FreeGameView() {
             className="rounded-full bg-white transition ease-in delay-150 hover:scale-105 duration-200 hover:cursor-pointer text-3xl font-black p-3 m-3 text-black w-full"
             onClick={() => setResult(dices())}
           >
-            Jeter les dès
+            {t("common.rollDice")}
           </button>
         </div>
       </div>

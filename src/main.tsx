@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
+import "./i18n";
 import GameMenuView from "./view/game-menu/GameMenuView";
 import BiscuiteGameView from "./view/game/biscuite/BiscuiteGameView";
 import FreeGameView from "./view/game/free/FreeGameView";
@@ -13,15 +14,17 @@ import SplashscreenView from "./view/splashscreen/Splashscreen";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<SplashscreenView />} />
-        <Route path="/menu" element={<MenuView />} />
-        <Route path="/game/menu" element={<GameMenuView />} />
-        <Route path="/game/biscuite" element={<BiscuiteGameView />} />
-        <Route path="/game/free" element={<FreeGameView />} />
-        <Route path="/rules" element={<RulesView />} />
-      </Routes>
-    </BrowserRouter>
+    <Suspense fallback={null}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<SplashscreenView />} />
+          <Route path="/menu" element={<MenuView />} />
+          <Route path="/game/menu" element={<GameMenuView />} />
+          <Route path="/game/biscuite" element={<BiscuiteGameView />} />
+          <Route path="/game/free" element={<FreeGameView />} />
+          <Route path="/rules" element={<RulesView />} />
+        </Routes>
+      </BrowserRouter>
+    </Suspense>
   </React.StrictMode>
 );
