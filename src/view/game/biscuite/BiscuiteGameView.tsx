@@ -4,7 +4,7 @@ import { loadFull } from "tsparticles";
 import closeIcon from "../../../assets/icons/close.svg";
 import CloseButton from "../../../common/component/CloseButton";
 import CloseModal from "../../../common/component/CloseModal";
-import DiceResult from "../../../common/component/DiceResult";
+import ThreeDiceRoll from "../../../common/component/ThreeDiceRoll";
 import Modal from "../../../common/component/Modal";
 import SwiperTest from "../../../common/component/SwiperTest";
 import { updateGamePlayed } from "../../../common/logic/analytics";
@@ -23,6 +23,7 @@ function BiscuiteGameView() {
   const [actions, setActions] = useState<Action[]>(ALL_ACTIONS);
   const [result, setResult] = useState<Result>();
   const [someoneIsKatin, setSomeoneIsKatin] = useState<boolean>(false);
+  const [rolling, setRolling] = useState<boolean>(false);
   const [showModal, setShowModal] = useState(false);
 
   const createNewRule = (): boolean =>
@@ -48,7 +49,15 @@ function BiscuiteGameView() {
       <div className="h-full flex flex-col items-center justify-center background-gradient">
         <CloseButton icon={closeIcon} action={() => setShowModal(true)} />
         <div className="h-5/6 w-full md:w-2/3 flex flex-col items-center justify-evenly">
-          <DiceResult dices={result?.dices} />
+          <div className="h-1/6 w-full flex flex-col items-center justify-center">
+            <div className="w-5/6 sm:w-2/3 md:w-1/2" style={{ height: "100%" }}>
+              <ThreeDiceRoll
+                rolling={rolling}
+                result={result ? [result.dices[0], result.dices[1]] : undefined}
+                onFinished={() => setRolling(false)}
+              />
+            </div>
+          </div>
           {slides && <SwiperTest index={slides} result={result} />}
           {createNewRule() && <NewRule addRule={addRule}></NewRule>}
         </div>
@@ -58,13 +67,14 @@ function BiscuiteGameView() {
               type="button"
               className="rounded-full bg-white transition ease-in delay-150 hover:scale-105 duration-200 hover:cursor-pointer text-3xl font-black p-3 m-3 text-black w-full"
               onClick={() => {
-                const result = play(
+                const nextResult = play(
                   actions,
                   dices(),
                   someoneIsKatin,
                   setSomeoneIsKatin
                 );
-                setResult(result);
+                setResult(nextResult);
+                setRolling(true);
                 addEl();
               }}>
               Jeter les dès
